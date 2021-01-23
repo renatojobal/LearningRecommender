@@ -5,12 +5,18 @@
  */
 package gui;
 
+import agents.Receiver;
+
 /**
  *
  * @author renat
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    String valor;
+    boolean banderagui = false;
+    Receiver objDeteccion;
+    
     /**
      * Creates new form NewJFrame
      */
@@ -29,7 +35,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldInput = new javax.swing.JTextField();
+        listResources = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,23 +49,27 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Busca algún recurso de aprendizaje");
+        jTextFieldInput.setText("Busca algún recurso de aprendizaje");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(282, 282, 282))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldInput, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jButton1)
                         .addGap(172, 172, 172))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(listResources, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,15 +79,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(339, Short.MAX_VALUE))
+                    .addComponent(jTextFieldInput, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(listResources, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // On Button pressed
+        banderagui = true;  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -114,10 +128,28 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public String getWord(){ 
+        do {
+            if (banderagui = false) {
+                listResources.add("Ingresa una palabra");
+            }else{
+                valor = jTextFieldInput.getText();
+            }
+        } while (banderagui==false);        
+        return valor;
+
+    }
+    
+    public void showLinks(String enlaces){        
+        listResources.add(enlaces);  //mostramos los enlaces en la interfaz
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldInput;
+    private java.awt.List listResources;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,11 +9,11 @@ public class ResourceDB {
     
     ConnectionDB conecction = new ConnectionDB();
      
-    public ResultSet getEmotion(String emotion) throws ClassNotFoundException, SQLException{
+    public ResultSet getResource(String title) throws ClassNotFoundException, SQLException{
         
         Statement statement = conecction.openConnection().createStatement();
         String query = String.format("SELECT * FROM Resource "
-                + "WHERE title = '%s'", emotion);
+                + "WHERE title = '%s'", title);
  
         return statement.executeQuery(query);
     }

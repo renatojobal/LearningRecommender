@@ -12,22 +12,22 @@ public class ConnectionDB {
     
         
     /**
-     * Establecer la conexión con la base de datos
-     * @return [Connection]: Objeto que permite manipular la base de datos
+     * Stablish the connection with the database
+     * @return [Connection]: Object that allow manipulate the database
      * @throws ClassNotFoundException
      * @throws SQLException 
      */
     public Connection openConnection() throws ClassNotFoundException, SQLException{
         String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/emotionsdb";
+        String url = "jdbc:mysql://localhost:3306/resourcesdb";
         Class.forName(driver);
-        conecction = DriverManager.getConnection(url,"teacher","teacher");
+        conecction = DriverManager.getConnection(url, "root", "");
         
         return conecction;
     }
     
     /**
-     * Cerrar la conexión con la base de datos
+     * Close the database connection
      * @throws SQLException 
      */
     public void closeConnection() throws SQLException{
